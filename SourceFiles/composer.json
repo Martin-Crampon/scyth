@@ -1,0 +1,20 @@
+{
+    "name": "martin-crampon/scyth",
+    "require": {
+        "michelf/php-markdown": "^1.9",
+        "illuminate/database": "^8.46"
+    },
+    "authors": [
+        {
+            "name": "Martin Crampon",
+            "email": "martin.crampon@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\Core\\": "App/Core",
+            "App\\Controller\\": "App/Controller",
+            "App\\Model\\": "App/Model"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+#----------------------------------------------------------------------------------------------------
+# Directory : /SourceFiles/
+#----------------------------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /scyth/SourceFiles/
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)\.css$ App/Public/css/$1.css [L,NC]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)\.css$ App/Public/js/$1.js [L,NC]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)\.(gif|jpg|png|jpeg)$ App/Public/pictures/$1.$2 [L,NC]
+    
+    # Removes index.php from ExpressionEngine URLs  
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)$ App/index.php?url=$1 [QSA,L]
+
+    RewriteCond %{REQUEST_URI} !(\.gif|\.jpg|\.png|\.jpeg|\.css|\.js|\.swf)$ [NC]
+    RewriteRule ^ App/index.php [L]
+
+    ErrorDocument 401 App/Core/ErrorPages/error401.html
+    ErrorDocument 404 App/Core/ErrorPages/error404.html
+    ErrorDocument 403 App/Core/ErrorPages/error403.html
+    ErrorDocument 500 App/Core/ErrorPages/error500.html
+    ErrorDocument 503 App/Core/ErrorPages/error503.html
+</IfModule>
